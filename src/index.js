@@ -1,17 +1,47 @@
-import React from 'react';
+import _ from 'lodash';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
+import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_details';
 
+const API_KEY = '<Add Your YOUTUBE API KEY generated from developers.google.com>';
 
-const API_KEY = 'AIzaSyDxcr-S-lGFBuM6h-PHVvP8y6uHGfqb2YE';
+class App extends Component{
+	constructor(props){
+		super(props);
 
-const App = () => {
-	return	(
-		<div> 
-			<SearchBar />
-		</div>
-	);
+		this.state = { 
+			videos: [],
+			selectedVideo: null
+		}
+
+		this.videoSearch('surfboards');
+
+	}
+
+	videoSearch(term) {
+		YTSearch({key: API_KEY, term: term}, (data) => this.setState({
+				videos: data,
+				selectedVideo: data[0]
+			})
+		); //like fetch method async call
+	}
+
+	render(){
+		const videoSearch = _.debounce((term) => { this.videoSearch(term)}, 300);  //run onsearch callback every 300 msec on new input.
+
+		return(
+			<div> 
+				<SearchBar onSearchTermChange = {videoSearch}/>
+				<VideoDetail video={this.state.selectedVideo}/>
+				<VideoList 
+					onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
+					videos = {this.state.videos} />
+			</div>
+		)
+	}
 };
 
 ReactDOM.render(<App />, document.querySelector('.container'));
