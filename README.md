@@ -9,3 +9,6 @@ run **npm install**
 
 Once build is successful => http://localhost:8080  
 
+It looks like
+![SnapShot of App](./images/YoutubeApp.jpg?raw=true "Optional Title")
+
