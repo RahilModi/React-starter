@@ -4,8 +4,9 @@
 
 Clone the repository.  
 
-run **npm install**    
-**npm start**  
+Run following commands:  
+1) **npm install**    
+2) **npm start**  
 
 Once build is successful => http://localhost:8080  
 
