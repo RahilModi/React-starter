@@ -9,5 +9,5 @@ run **npm install**
 
 Once build is successful => http://localhost:8080  
 
-![SnapShot of App](./images/YoutubeApp.png?raw=true "Search about surfboards")
+![SnapShot of App](./images/YoutubeApp.png?raw=true "Searched about surfboards")
 
