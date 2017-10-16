@@ -1,5 +1,5 @@
-const API_KEY = '639c81fd06d4eca517d55159c58da91a';
-const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`
+import key from '../config.json';
+const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${key.WEATHER_API_KEY}`
 
 import axios from 'axios';
 
